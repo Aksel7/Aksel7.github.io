@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arbre de découvertes Last.fm</title>
+<meta name="description" content="Visualise comment tes goûts musicaux se sont étendus : un arbre de tes artistes Last.fm, du plus ancien au plus récent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap" id="app">
+  <header>
+    <h1>Arbre de découvertes</h1>
+    <p class="sub" id="sub">Ton historique Last.fm, du plus ancien au plus récent</p>
+  </header>
+
+  <section class="hero" id="hero">
+    <p class="lede">Les artistes que tu écoutes depuis le début sont au centre ; chaque nouvelle découverte se rattache à l'artiste proche (même univers, featurings en commun) que tu écoutais déjà. La taille d'un rond suit tes écoutes. Tout se calcule dans ton navigateur : rien n'est envoyé à un serveur autre que Last.fm.</p>
+    <div class="tabs" role="tablist" id="tabs">
+      <button role="tab" aria-selected="true" data-tab="user">Pseudo Last.fm</button>
+      <button role="tab" aria-selected="false" data-tab="csv">Fichier CSV</button>
+      <button role="tab" aria-selected="false" data-tab="json">Reprendre un arbre</button>
+      <button role="tab" aria-selected="false" data-tab="example">Exemple</button>
+    </div>
+
+    <div class="panel" data-panel="user">
+      <label>Pseudo Last.fm<input type="text" id="user" autocomplete="off" spellcheck="false" placeholder="ex. rj"></label>
+      <label>Clé API Last.fm<input type="password" id="key" autocomplete="off" spellcheck="false" placeholder="32 caractères"></label>
+      <p class="hint">Une clé gratuite se crée sur <a href="https://www.last.fm/api/account/create" target="_blank" rel="noopener">last.fm/api/account/create</a> (tu peux y mettre n'importe quel nom). Elle reste dans ton navigateur. Ton profil doit être public. Compte une à deux minutes pour un gros historique.</p>
+      <button class="btn" id="goUser" type="button">Construire l'arbre</button>
+    </div>
+
+    <div class="panel" data-panel="csv" hidden>
+      <label>Export Last.fm (.csv)<input type="file" id="csv" accept=".csv,text/csv"></label>
+      <label>Clé API Last.fm (facultative, mais sans elle il n'y a ni voisins ni univers fiables : seuls les featurings relient les artistes)<input type="password" id="key2" autocomplete="off" spellcheck="false" placeholder="32 caractères"></label>
+      <p class="hint">Exporte ton historique avec un outil comme <a href="https://lastfm.ghan.nl/export/" target="_blank" rel="noopener">lastfm.ghan.nl/export</a> (colonnes uts, artist, track…).</p>
+      <button class="btn" id="goCsv" type="button">Construire l'arbre</button>
+    </div>
+
+    <div class="panel" data-panel="json" hidden>
+      <label>Arbre enregistré (.json)<input type="file" id="jsonf" accept=".json,application/json"></label>
+      <p class="hint">Après une construction, le bouton « Enregistrer » te donne un fichier à rouvrir ici sans rien recalculer.</p>
+      <button class="btn" id="goJson" type="button">Ouvrir</button>
+    </div>
+
+    <div class="panel" data-panel="example" hidden>
+      <p class="hint">Un exemple réel : 75 000 écoutes, deux univers (États-Unis et international, France et francophonie).</p>
+      <button class="btn" id="goExample" type="button">Voir l'exemple</button>
+    </div>
+
+    <div class="bar" id="bar" hidden><i id="barfill"></i></div>
+    <div class="prog" id="prog" aria-live="polite"></div>
+    <div class="err" id="err" role="alert"></div>
+  </section>
+
+  <section id="viewer" hidden></section>
+</div>
+<script src="vendor/d3.min.js"></script>
+<script src="config.js"></script>
+<script src="js/pipeline.js"></script>
+<script src="js/graph.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
