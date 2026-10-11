@@ -1,34 +1,34 @@
-# 🌳 Arbre de découvertes Last.fm
+# 🌳 Last.fm Discovery Tree
 
-**Vois comment ton goût musical a poussé, artiste après artiste.**
+**See how your music taste grew, artist after artist.**
 
-Entre ton pseudo Last.fm : le site dessine l'arbre de tes découvertes. Les artistes que tu écoutes depuis toujours sont au centre, et chaque nouvelle découverte se rattache à l'artiste proche que tu écoutais déjà.
+Enter your Last.fm username and the site draws the tree of your discoveries. The artists you've listened to the longest sit at the center, and each new discovery branches off from a related artist you already knew.
 
-👉 **[Essayer le site](https://TON-PSEUDO.github.io/NOM-DU-REPO/)**
+👉 **[Try the site](https://YOUR-USERNAME.github.io/REPO-NAME/)**
 
-## ✨ Ce que ça montre
+## ✨ What it shows
 
-- 🎯 Les artistes les plus anciens au centre, les découvertes récentes vers l'extérieur
-- ⭕ Un anneau par année, la taille des ronds selon tes écoutes
-- 🎤 Les featurings qui relient les artistes (en vert)
-- ↔️ Deux univers de part et d'autre, détectés automatiquement
-- 🔍 Zoom : les noms apparaissent dans les ronds quand tu t'approches
-- ▶️ Lecture dans le temps pour voir l'arbre grandir
+- 🎯 Your oldest artists at the center, recent discoveries toward the edge
+- ⭕ One ring per year, circle size based on your play counts
+- 🎤 Features linking artists together (in green)
+- ↔️ Two "worlds" on either side, detected automatically
+- 🔍 Zoom in and artist names appear inside the circles
+- ▶️ Playback over time to watch the tree grow
 
-## 🚀 Utilisation
+## 🚀 Usage
 
-1. Crée une clé API gratuite sur [last.fm/api/account/create](https://www.last.fm/api/account/create)
-2. Saisis ton pseudo (profil public) et ta clé
-3. Attends une à deux minutes, puis explore
+1. Create a free API key at [last.fm/api/account/create](https://www.last.fm/api/account/create)
+2. Enter your username (public profile) and your key
+3. Wait a minute or two, then explore
 
-Tu peux aussi charger un export CSV de ton historique, ou enregistrer ton arbre en `.json` pour le rouvrir sans refaire les requêtes.
+You can also load a CSV export of your history, or save your tree as a `.json` file to reopen it without refetching.
 
-## 🔒 Confidentialité
+## 🔒 Privacy
 
-Tout se calcule dans ton navigateur. Ta clé reste chez toi, et rien n'est envoyé ailleurs qu'à Last.fm.
+Everything is computed in your browser. Your key stays with you, and nothing is sent anywhere except to Last.fm.
 
-## 🧠 Comment ça marche
+## 🧠 How it works
 
-Le parent d'un artiste est celui qu'il a déjà écouté avant lui et avec qui il partage le plus de featurings, puis le plus proche d'après Last.fm.
+An artist's parent is the one you had already listened to before them and with whom they share the most features, then the closest match according to Last.fm.
 
-Fait avec [d3](https://d3js.org/) et de la musique.
+Built with [d3](https://d3js.org/) and good music.
